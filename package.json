@@ -1,0 +1,24 @@
+{
+  "name": "api-ecommerce-hackadev",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/deiaalvs/api-ecommerce-hackadev.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/deiaalvs/api-ecommerce-hackadev/issues"
+  },
+  "homepage": "https://github.com/deiaalvs/api-ecommerce-hackadev#readme",
+  "dependencies": {
+    "express": "^4.18.1",
+    "pg-promise": "^10.12.0"
+  }
+}

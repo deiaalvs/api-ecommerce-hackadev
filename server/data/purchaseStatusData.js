@@ -33,11 +33,11 @@ module.exports.addPurchaseStatus = addPurchaseStatus;
 
 
 const updatePurchaseStatus = (request, response) => {
-    const { id_status, status_name, data_inclusao, purchase_status } = request.body
+    const { id_status, status_name, data_inclusao, data_alteracao, purchase_status } = request.body
 
     pool.query(
-        'UPDATE PurchaseStatus set status_name = $2, data_inclusao = now(), purchase_status = $4 where id_status = $1',
-        [id_status, status_name, data_inclusao, purchase_status],
+        'UPDATE PurchaseStatus set status_name = $2, data_inclusao = $3, data_alteracao = now(), purchase_status = $5 where id_status = $1',
+        [id_status, status_name, data_inclusao, data_alteracao, purchase_status],
         (error) => {
             if (error) {
                 return response.status(401).json({ status: 'error', 
@@ -52,7 +52,7 @@ module.exports.updatePurchaseStatus = updatePurchaseStatus;
 
 const deletePurchaseStatus = (request, response) => {
 
-    const id_status = parseInt(request.params.codigo)    
+    const id_status = parseInt(request.params.id_status)    
 
     pool.query(
         'DELETE from PurchaseStatus where id_status = $1',
@@ -71,10 +71,10 @@ module.exports.deletePurchaseStatus = deletePurchaseStatus;
 
 const getPurchaseStatusById = (request, response) => {
 
-    const id_status = parseInt(request.params.codigo)    
+    const id_status = parseInt(request.params.id_status)    
 
     pool.query(
-        'select * from editoras where id_status = $1',
+        'select * from PurchaseStatus where id_status = $1',
         [id_status],
         (error, results) => {
             if (error || results.rowCount == 0) {

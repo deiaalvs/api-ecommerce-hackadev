@@ -40,3 +40,5 @@ router.get('/purchaseStatus', async (req, res) => {
     res.send(`O erro é no pool get ${err}`);
   }
 })
+
+module.exports = router;

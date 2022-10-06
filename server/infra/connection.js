@@ -26,14 +26,12 @@ client.query('SELECT table_schema,table_name FROM information_schema.tables;', (
 const express = require('express');
 const router = express.Router();
 
-const purchaseStatusService = require('../service/purchaseStatusService');
-
 router.get('/purchaseStatus', async (req, res) => {
   try {
     const client = await pool.connect();
     const result = await client.query('SELECT * FROM PurchaseStatus');
     const results = { 'results': (result) ? result.rows : null};
-    res.render('/purchaseStatus', results );
+    res.render('pages/purchaseStatus', results );
     client.release();
   } catch (err) {
     console.error(err);

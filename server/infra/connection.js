@@ -38,7 +38,6 @@ client.query('SELECT table_schema,table_name FROM information_schema.tables;', (
   client.end();
 });
 
-const express = require('express');
 const router = express.Router();
 
 router.get('/purchaseStatus', async (req, res) => {

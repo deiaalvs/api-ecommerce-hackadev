@@ -7,6 +7,21 @@ const client = new Client({
 });
 client.connect();
 
+const cool = require('cool-ascii-faces');
+const purchaseStatusService = require('../service/purchaseStatusService');
+const express = require('express');
+const path = require('path');
+const PORT = process.env.PORT || 5000;
+
+express()
+  .use(express.static(path.join(__dirname, 'public')))
+  .set('views', path.join(__dirname, 'views'))
+  .set('view engine', 'ejs')
+  .get('/', (req, res) => res.render('pages/index'))
+  .get('/cool', (req, res) => res.send(cool()))
+  .get('/purchaseStatus', (req, res) => res.send(purchaseStatusService.getPurchaseStatus()))
+  .listen(PORT, () => console.log(`Listening on ${ PORT }`));
+
 const { Pool } = require('pg');
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
@@ -25,14 +40,13 @@ client.query('SELECT table_schema,table_name FROM information_schema.tables;', (
 
 const express = require('express');
 const router = express.Router();
-//const purchaseStatusService = require('../service/purchaseStatusService');
 
 router.get('/purchaseStatus', async (req, res) => {
   try {
     const client = await pool.connect();
     const result = await client.query('SELECT * FROM PurchaseStatus');
     const results = { 'results': (result) ? result.rows : null};
-    res.render('../service/purchaseStatusService', results );
+    res.render('/purchaseStatus', results );
     client.release();
   } catch (err) {
     console.error(err);
@@ -40,4 +54,4 @@ router.get('/purchaseStatus', async (req, res) => {
   }
 })
 
-module.exports = router;
+module.exports = router

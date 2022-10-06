@@ -7,10 +7,8 @@ const client = new Client({
 });
 client.connect();
 
-const data = require('./server/data/purchaseStatusData')
-function purchaseStatusService () {
-  return data.getPurchaseStatus();
-}
+const purchaseStatusService = require('../service/purchaseStatusService');
+
 const express = require('express');
 const path = require('path');
 const PORT = process.env.PORT || 5000;

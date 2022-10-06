@@ -8,7 +8,7 @@ const client = new Client({
 client.connect();
 
 const data = require('./server/data/purchaseStatusData')
-const purchaseStatusService = () => {
+function purchaseStatusService () {
   return data.getPurchaseStatus();
 }
 const express = require('express');
@@ -19,7 +19,7 @@ express()
   .use(express.static(path.join(__dirname, 'public')))
   .set('views', path.join(__dirname, 'views'))
   .set('view engine', 'ejs')
-  .get('/purchaseStatus', (req, res) => res.send(purchaseStatusService))
+  .get('/purchaseStatus', (req, res) => res.send(purchaseStatusService()))
   .listen(PORT, () => console.log(`Listening on ${ PORT }`));
 
 const { Pool } = require('pg');

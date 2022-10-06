@@ -1,2 +1,1 @@
-web: node server.js
-ssl: { rejectUnauthorized: false }
+web: node index.js

@@ -19,7 +19,7 @@ express()
   .use(express.static(path.join(__dirname, 'public')))
   .set('views', path.join(__dirname, 'views'))
   .set('view engine', 'ejs')
-  .get('/purchaseStatus', (req, res) => res.send(purchaseStatusService.getPurchaseStatus()))
+  .get('/purchaseStatus', (req, res) => res.send(purchaseStatusService))
   .listen(PORT, () => console.log(`Listening on ${ PORT }`));
 
 const { Pool } = require('pg');

@@ -7,8 +7,10 @@ const client = new Client({
 });
 client.connect();
 
-
-const purchaseStatusService = require('./server/service/purchaseStatusService');
+const data = require('./server/data/purchaseStatusData')
+const purchaseStatusService = () => {
+  return data.getPurchaseStatus();
+}
 const express = require('express');
 const path = require('path');
 const PORT = process.env.PORT || 5000;
@@ -17,7 +19,6 @@ express()
   .use(express.static(path.join(__dirname, 'public')))
   .set('views', path.join(__dirname, 'views'))
   .set('view engine', 'ejs')
-  .get('/', (req, res) => res.render('pages/index'))
   .get('/purchaseStatus', (req, res) => res.send(purchaseStatusService.getPurchaseStatus()))
   .listen(PORT, () => console.log(`Listening on ${ PORT }`));
 

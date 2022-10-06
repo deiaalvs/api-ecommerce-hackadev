@@ -1,4 +1,4 @@
-const database = require('../infra/connection');
+const database = require('../../connection');
 /*Validado*/
 exports.getCustomer = function () {
     return database.query("SELECT * FROM Customer")

@@ -1,4 +1,4 @@
-const database = require('../infra/connection');
+const database = require('../../connection');
 
 /*validado*/
 exports.getProduct = function () {

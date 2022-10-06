@@ -8,7 +8,6 @@ server.use(express.json())
 // server.use('/', require('./server/route/customerRoute'))
 // server.use('/', require('./server/route/addressRoute'))
 // server.use('/', require('./server/route/purchaseRoute'))
-server.use('/', require('./server/infra/connection'))
 
 server.listen(port, () => {
     console.log(`Servidor escutando na porta ${port}`)

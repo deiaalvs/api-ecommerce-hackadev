@@ -1,4 +1,4 @@
-const database = require('../infra/connection');
+const database = require('../../connection');
 
 exports.getPurchase = function () {
     return database.query("SELECT * FROM Purchase")

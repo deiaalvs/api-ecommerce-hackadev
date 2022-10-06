@@ -2,9 +2,9 @@
   "name": "api-ecommerce-hackadev",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "connection.js",
   "scripts": {
-    "start": "node server.js",
+    "start": "node connection.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

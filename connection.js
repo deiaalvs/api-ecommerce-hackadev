@@ -8,7 +8,7 @@ const client = new Client({
 client.connect();
 
 
-const purchaseStatusService = require('../service/purchaseStatusService');
+const purchaseStatusService = require('./server/service/purchaseStatusService');
 const express = require('express');
 const path = require('path');
 const PORT = process.env.PORT || 5000;

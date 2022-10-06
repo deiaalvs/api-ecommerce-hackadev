@@ -1,9 +1,5 @@
-<<<<<<< HEAD
-const { pool } = require("../config");
+const { pool } = require("../../config");
 const { request, response } = require("express");
-=======
-const database = require('../../connection');
->>>>>>> fbf6d6812fff6f6f4c231bd93c0251c4ccc4488d
 
 const getPurchaseStatus = (request, response) => {
     pool.query("select * from PurchaseStatus", (error, results) => {

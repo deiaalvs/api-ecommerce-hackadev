@@ -95,7 +95,16 @@ app
     .get(controlSize.getSizeById)
     .delete(controlSize.deleteSize)
 
-
+const controlColor = require('./server/data/colorData')
+app
+    .route('/colors')
+    .get(controlColor.getColor)
+    .post(controlColor.addColor)
+    .put(controlColor.updateColor)
+app
+    .route('/colors/:id_color')
+    .get(controlColor.getColorById)
+    .delete(controlColor.deleteColor)
 
 
 app.listen(process.env.PORT || 3002, () => {

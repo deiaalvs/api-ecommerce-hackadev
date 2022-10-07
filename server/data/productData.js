@@ -17,8 +17,8 @@ const addProduct = (request, response) => {
     const product = request.body
 
     pool.query(
-        'INSERT INTO Product (product_name, product_category, product_size, product_barCode, product_price, product_hasDiscount, data_inclusao, status) VALUES ($1, $2, $3, $4, $5, $6, now(), $8)',
-        [product.product_name, product.product_category, product.product_size, product.product_barCode, product.product_price, product.product_hasDiscount, product.data_inclusao, product.status],
+        'INSERT INTO Product (product_name, product_category, product_size, product_color, product_image, product_barCode, product_price, product_hasDiscount, data_inclusao, status) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, now(), $10)',
+        [product.product_name, product.product_category, product.product_size, product.product_color, product.product_image, product.product_barCode, product.product_price, product.product_hasDiscount, product.data_inclusao, product.status],
         (error) => {
             if (error) {
                 return response.status(401).json({ status: 'error', 
@@ -32,11 +32,11 @@ const addProduct = (request, response) => {
 module.exports.addProduct = addProduct;
 
 const updateProduct = (request, response) => {
-    const { id_product, product_name, product_category, product_size, product_barCode, product_price, product_hasDiscount, data_inclusao, data_alteracao, status } = request.body
+    const { id_product, product_name, product_category, product_size, product_color, product_image, product_barCode, product_price, product_hasDiscount, data_inclusao, data_alteracao, status } = request.body
 
     pool.query(
-        'UPDATE Product set product_name = $2, product_category = $3, product_size = $4, product_barCode = $5, product_price = $6, product_hasDiscount = $7, data_inclusao = $8, data_alteracao = now(), status = $10 where id_product = $1',
-        [id_product, product_name, product_category, product_size, product_barCode, product_price, product_hasDiscount, data_inclusao, data_alteracao, status],
+        'UPDATE Product set product_name = $2, product_category = $3, product_size = $4, product_color = $5, product_image = $6, product_barCode = $7, product_price = $8, product_hasDiscount = $9, data_inclusao = $10, data_alteracao = now(), status = $12 where id_product = $1',
+        [id_product, product_name, product_category, product_size, product_color, product_image, product_barCode, product_price, product_hasDiscount, data_inclusao, data_alteracao, status],
         (error) => {
             if (error) {
                 return response.status(401).json({ status: 'error', 

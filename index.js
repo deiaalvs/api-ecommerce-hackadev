@@ -84,6 +84,18 @@ app
     .get(controlProductImage.getProductImageById)
     .delete(controlProductImage.deleteProductImage)
     
+const controlSize = require('./server/data/sizeData')
+app
+    .route('/sizes')
+    .get(controlSize.getSize)
+    .post(controlSize.addSize)
+    .put(controlSize.updateSize)
+app
+    .route('/sizes/:id_size')
+    .get(controlSize.getSizeById)
+    .delete(controlSize.deleteSize)
+
+
 
 
 app.listen(process.env.PORT || 3002, () => {

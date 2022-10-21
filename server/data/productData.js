@@ -93,7 +93,7 @@ const getProductAndCategory = (request, response) => {
         `select * from Product p
                 INNER JOIN Category c ON p.product_category = c.id_category
                 INNER JOIN Colors cl ON p.product_color = cl.id_color
-                INNER JOIN Sizes s ON p.product_size = s.id_size OR p.product_size = null`,
+                LEFT JOIN Sizes s ON p.product_size = s.id_size`,
         (error, results) => {
             if (error || results.rowCount == 0) {
                 return response.status(401).json({ status: 'error', 

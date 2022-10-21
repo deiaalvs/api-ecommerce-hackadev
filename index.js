@@ -40,6 +40,10 @@ app
     .get(controlProduct.getProductById)
     .delete(controlProduct.deleteProduct)
 
+app
+    .route('/product_all')
+    .get(controlProduct.getProductAndCategory)
+
 const controlCategory = require('./server/data/categoryData')
 app
     .route('/category')

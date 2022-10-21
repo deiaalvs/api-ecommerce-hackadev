@@ -86,3 +86,22 @@ const getProductById = (request, response) => {
 }
 
 module.exports.getProductById = getProductById;
+
+const getProductAndCategory = (request, response) => {
+
+    pool.query(
+        `select * from Product p
+                INNER JOIN Category c ON p.product_category = c.id_category
+                INNER JOIN Colors cl ON p.product_color = cl.id_color
+                INNER JOIN Sizes s ON p.product_size = s.id_size`,
+        (error, results) => {
+            if (error || results.rowCount == 0) {
+                return response.status(401).json({ status: 'error', 
+                message: 'Não foi possível recuperar o produto: ' + error });
+            }
+            response.status(201).json(results.rows)
+        }        
+    )
+}
+
+module.exports.getProductAndCategory = getProductAndCategory;
